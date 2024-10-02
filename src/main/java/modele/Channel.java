@@ -1,8 +1,12 @@
 package modele;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Channel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,9 +15,7 @@ public class Channel {
     private String nom;
     private String type; // Par exemple : "textuel" ou "vocal"
 
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    private Group groupe;
+
 
     // Constructeurs, getters, setters, equals, hashCode, toString
 }
