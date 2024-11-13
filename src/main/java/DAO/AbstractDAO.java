@@ -85,4 +85,6 @@ public abstract class AbstractDAO<T extends Identifiable<ID>, ID> {
     public void close() {
         entityManagerFactory.close();
     }
+
+    public abstract void delete(Long id);
 }

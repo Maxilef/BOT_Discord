@@ -11,3 +11,19 @@ L
 src/main/java/bdd/Dockerfile,c/c/cc255615fea99afe01a428a9b98be0daed17fd9c
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+Q
+!src/main/java/modele/APPUser.java,3/a/3acce5e44f79722eed54129c4c2bae90527cbc88
+J
+src/test/java/testJPA.java,5/b/5b11995e8a88c41a20008668ac0dbaa7f348bda3
+L
+src/main/java/REST/Main.java,6/9/69cc37e6d2d778ac6dbc9131ae31ab6e80ac4bde
+P
+ src/main/java/DAO/DbManager.java,8/8/88d1f7fc096409c69424fc19e6f01a4e96ba6f06
+T
+$src/main/java/REST/TestResource.java,d/0/d037ea2402c464fddb7479c980f9374c0b6d0396
+Q
+!src/test/java/APPUserDaoTest.java,7/e/7e9fd5907577ce7e6bef831b483789efe8e2395c
+Q
+!src/main/java/DAO/APPUserDao.java,e/7/e77c59be2dd8e24bd5808ffb9f07f062dd88cd3e
+W
+'src/main/java/REST/APPUserResource.java,5/e/5ede7bdd5d418c40af332fda75e53cee2af5fe2b
