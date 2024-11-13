@@ -26,6 +26,11 @@ public class ChanelDao extends AbstractDAO<Channel, Long> {
         }
     }
 
+    @Override
+    public void delete(Long id) {
+        return ;
+    }
+
     public Channel findByName(String name) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {

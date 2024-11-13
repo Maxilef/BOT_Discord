@@ -26,6 +26,11 @@ public class RoleDao extends AbstractDAO<Role, Long> {
         }
     }
 
+    @Override
+    public void delete(Long id) {
+        return;
+    }
+
     public Role findByName(String name) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {

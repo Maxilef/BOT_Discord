@@ -15,9 +15,35 @@ public class APPUser implements Identifiable<Long> {
     private Long id;
 
     private String nom;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     private String email;
 
 
+    /**
     @ManyToMany
     @JoinTable(
             name = "user_roles",
@@ -25,5 +51,6 @@ public class APPUser implements Identifiable<Long> {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+    **/
 
 }

@@ -1,0 +1,25 @@
+## GET BY ID
+curl -X GET http://localhost:8087/users
+
+## GET BY ID
+curl -X GET http://localhost:8087/users/1
+
+## POST
+curl -X POST http://localhost:8087/users \
+-H "Content-Type: application/json" \
+-d '{
+    "nom": "Dupont",
+    "email": "dupont@example.com"
+}'
+
+## PUT
+curl -X PUT http://localhost:8087/users/1 \
+-H "Content-Type: application/json" \
+-d '{
+    "nom": "DupontUpdated",
+    "email": "dupontupdated@example.com"
+}'
+## DELETE
+curl -X DELETE http://localhost:8080/your-app-name/api/users/1
+
+
