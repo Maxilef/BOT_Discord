@@ -27,3 +27,9 @@ L
 src/main/java/REST/Main.java,6/9/69cc37e6d2d778ac6dbc9131ae31ab6e80ac4bde
 W
 'src/main/java/REST/APPUserResource.java,5/e/5ede7bdd5d418c40af332fda75e53cee2af5fe2b
+T
+$src/main/java/REST/JerseyConfig.java,f/1/f10ddd2e60315836292de7c038a4566082966c3b
+P
+ src/main/java/DAO/ChanelDao.java,5/2/52739597c65191a3544cbdd313c4867816e75cc2
+N
+src/main/java/DAO/RoleDao.java,b/6/b62144c61104afdf4a45e0a22d4075bfa10aa783
