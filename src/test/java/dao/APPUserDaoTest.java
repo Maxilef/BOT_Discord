@@ -1,3 +1,5 @@
+package dao;
+
 import DAO.APPUserDao;
 import DAO.DbManager;
 import jakarta.persistence.EntityManager;
