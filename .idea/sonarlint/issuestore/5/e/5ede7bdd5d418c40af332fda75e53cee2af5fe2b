@@ -1,9 +1,13 @@
 
-x
-java:S1488&"]Immediately return this expression instead of assigning it to the temporary variable "users".(Ïƒƒ”ÿÿÿÿÿ
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ï¤î¦
-Q	java:S125%"<This block of commented-out lines of code should be removed.(‘’ö
-]
-java:S1128"BRemove this unused import 'jakarta.persistence.EntityTransaction'.(¡«Ä×üÿÿÿÿ
-L
-java:S1068"1Remove this unused "entityManager" private field.(æó¨§ûÿÿÿÿ
+p
+java:S1192Ô"RDefine a constant instead of duplicating this literal "RÃ´le non trouvÃ©" 3 times.(Š·ßÀ8ê°ïÈ¿2
+z
+java:S1192v"XDefine a constant instead of duplicating this literal "Utilisateur non trouvÃ©" 5 times.(ì¨Ù¦üÿÿÿÿ8ê°ïÈ¿2
+
+java:S1488-"]Immediately return this expression instead of assigning it to the temporary variable "users".(Ïƒƒ”ÿÿÿÿÿ8ë°ïÈ¿2
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ï¤î¦8í°ïÈ¿2
+X	java:S125,"<This block of commented-out lines of code should be removed.(‘’ö8”±ïÈ¿2
+G	java:S106Í"+Replace this use of System.out by a logger.(‘“Â78£±ïÈ¿2
+H	java:S106Ô"+Replace this use of System.out by a logger.(Š·ßÀ8¤±ïÈ¿2
+M	java:S106à"+Replace this use of System.out by a logger.(²ž´åùÿÿÿÿ8¥±ïÈ¿2
+H	java:S106å"+Replace this use of System.out by a logger.(™…£°8¦±ïÈ¿2

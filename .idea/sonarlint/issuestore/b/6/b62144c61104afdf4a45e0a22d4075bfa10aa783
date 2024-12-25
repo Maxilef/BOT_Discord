@@ -1,4 +1,6 @@
 
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ä”òª
 a
-java:S2387"?"entityManagerFactory" is the name of a field in "AbstractDAO".(’Š¾Âüÿÿÿÿ8ºğ´¯²2
+java:S2387"?"entityManagerFactory" is the name of a field in "AbstractDAO".(’Š¾Âüÿÿÿÿ8ºğ´¯²2
+M
+java:S1128"0Remove this unused import 'modele.Identifiable'.(‹…·8“¦„¹2
