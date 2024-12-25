@@ -1,0 +1,21 @@
+cd .\src\main\java\bdd
+sudo docker build -t image_red_psql .
+sudo docker run -d --name container_red_psql -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=mydatabase -p 5555:5432 image_red_psql
+sudo docker exec -it container_red_psql psql -U postgres
+\c mydatabase
+
+SELECT * FROM APPUser;
+
+
+truc a faire :
+
+finir parti rest
+
+modularité projet
+
+serveur app cdi
+
+bot discord
+gestion des roles par invite
+llm
++ autre
