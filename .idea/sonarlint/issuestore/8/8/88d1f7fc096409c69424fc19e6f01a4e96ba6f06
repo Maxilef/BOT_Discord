@@ -1,6 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ä”òª
-w
-java:S3008	"aRename this field "ENTITY_MANAGER_FACTORY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çŽÓÙ
-P
-java:S1118":Add a private constructor to hide the implicit public one.(Ï³Õš

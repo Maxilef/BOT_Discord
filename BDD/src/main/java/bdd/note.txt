@@ -11,8 +11,6 @@ truc a faire :
 
 finir parti rest
 
-modularité projet
-
 serveur app cdi
 
 bot discord

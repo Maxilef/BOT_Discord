@@ -1,0 +1,7 @@
+compile et exec le bot discord :
+
+mvn compile exec:java -Dexec.mainClass="com.example.bot.MainBot"
+
+
+
+
