@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2c2f33;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px auto;
+      background-color: #23272a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #7289da;
+    }
+
+    tr:nth-child(even) {
+      background-color: #2c2f33;
+    }
+
+    tr:hover {
+      background-color: #99aab5;
+      color: #2c2f33;
+    }
+
+    .roles {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .role {
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 0.9em;
+    }
+
+    .role.vip { background-color: #ffcc00; }
+    .role.valorant { background-color: #7289da; }
+    .role.cod { background-color: #f04747; }
+    .role.admin { background-color: #43b581; }
+    .role.intru { background-color: #747f8d; }
+
+    .add-role-btn {
+      background-color: #43b581;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    .add-role-btn:hover {
+      background-color: #3aa76d;
+    }
+
+    .create-user-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #7289da;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .create-user-btn:hover {
+      background-color: #5a6faf;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="text-align: center;">Member Table</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Member Since</th>
+    <th>Join Method</th>
+    <th>Roles</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Selenaa</td>
+    <td>1 month ago</td>
+    <td>ujnrjgKB</td>
+    <td class="roles">
+      <span class="role vip">VIP</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Mica</td>
+    <td>1 month ago</td>
+    <td>ASmA86Pf</td>
+    <td class="roles">
+      <span class="role vip">VIP</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>cookiemonster</td>
+    <td>1 month ago</td>
+    <td>X65WTVU3</td>
+    <td class="roles">
+      <span class="role valorant">Valorant</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Jambon</td>
+    <td>1 month ago</td>
+    <td>5TfDUfwq</td>
+    <td class="roles">
+      <span class="role cod">COD</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Garixx</td>
+    <td>1 month ago</td>
+    <td>nCRVHy8z</td>
+    <td class="roles">
+      <span class="role cod">COD</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>MaxilefN2</td>
+    <td>1 month ago</td>
+    <td>thMu329M</td>
+    <td class="roles">
+      <span class="role admin">ADMIN</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Romain3809</td>
+    <td>1 month ago</td>
+    <td>annWQv7w</td>
+    <td class="roles">
+      <span class="role valorant">Valorant</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>chachoudu38</td>
+    <td>1 month ago</td>
+    <td>annWQv7w</td>
+    <td class="roles">
+      <span class="role valorant">Valorant</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Lorguinow</td>
+    <td>1 month ago</td>
+    <td>Xan8rZD6</td>
+    <td class="roles">
+      <span class="role vip">VIP</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>Bawtex | Romain</td>
+    <td>1 month ago</td>
+    <td>vSMfGRnA</td>
+    <td class="roles">
+      <span class="role vip">VIP</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  <tr>
+    <td>EyaTlix</td>
+    <td>2 months ago</td>
+    <td>kSnExDmd</td>
+    <td class="roles">
+      <span class="role cod">COD</span>
+      <button class="add-role-btn">+</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button class="create-user-btn" onclick="location.href='create_user.html'">Create New User</button>
+<script>
+  // Charger les utilisateurs stockés localement
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // Récupérer le corps du tableau
+  const tbody = document.querySelector("table tbody");
+
+  // Fonction pour ajouter un utilisateur dans le tableau
+  function addUserToTable(user) {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+            <td>${user.name}</td>
+            <td>${user.memberSince}</td>
+            <td>${user.joinMethod}</td>
+            <td class="roles">
+                ${user.roles.map(role => `<span class="role">${role}</span>`).join(" ")}
+                <button class="add-role-btn">+</button>
+            </td>
+        `;
+    tbody.appendChild(row);
+  }
+
+  // Ajouter tous les utilisateurs au tableau
+  users.forEach(addUserToTable);
+</script>
+
+</body>
+</html>
