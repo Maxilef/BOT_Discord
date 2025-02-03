@@ -19,3 +19,13 @@ D
 WEB/index.html,0/5/05c868ab148068532aaddc67cde5f18f72569baa
 ^
 .BOT/src/main/java/com/example/bot/MainBot.java,c/5/c576365e702de9e235c45705be76a9be01a1fe7c
+W
+'Model/src/main/java/modele/APPUser.java,8/9/89048ea8bf25a61c53e99e809e87d114a48bedb7
+T
+$Model/src/main/java/modele/Role.java,9/1/91234a52c5d07cf3cda065884989839addb42020
+Y
+)Rest/src/main/java/REST/RoleResource.java,c/4/c4583d8d79f5091e50e3059e1094d9d942c349bc
+=
+Model/pom.xml,d/7/d7eb1f78eefba85ed79ab92db0fbca1ffa5450ef
+4
+note,c/5/c51048b7325d60e326d19a9cfbeff2577be1672e

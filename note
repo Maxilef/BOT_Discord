@@ -1,0 +1,4 @@
+mettre en provided pom modele
+changer le pom parent avec celui du prof et jakarta 10 qui nous donne toutes les depences direct
+forcé l'utilisation de jackson pour les json sérialisable
+une fois fait changer le war
