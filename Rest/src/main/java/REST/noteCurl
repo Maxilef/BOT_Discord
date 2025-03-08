@@ -12,6 +12,7 @@ curl -X POST http://localhost:8087/users \
     "email": "dupont@example.com"
 }'
 
+
 ## PUT
 curl -X PUT http://localhost:8087/users/1 \
 -H "Content-Type: application/json" \
@@ -26,4 +27,20 @@ curl -X DELETE http://localhost:8080/your-app-name/api/users/1
 
 ne pas oublier ne renseigner les classes dans le jersey config
 
+générer le .war pour payara
+mvn clean package -f pomforPAYARA.xml -DskipTests
 
+cp le war pour deployment automatique :
+cp target/Rest-1.0-SNAPSHOT.war /home/mxrsl/Bureau/payara6/glassfish/domains/domain1/autodeploy/
+
+
+payara est sur le port 8081 on peut le changer dans bin/../config/domain1/domain.xml
+
+ex requete curl sur serv application
+
+curl -X POST http://localhost:8081/Rest-1.0-SNAPSHOT/users \
+-H "Content-Type: application/json" \
+-d '{
+    "nom": "Dupontss",
+    "email": "duponts@example.com"
+}'

@@ -27,13 +27,13 @@ public class MainBot extends ListenerAdapter {
         // Ignorer les messages du bot lui-même
         if (event.getAuthor().isBot()) return;
 
-        // Réponse à un message spécifique
+        // Réponse à un message spécifique ici !ping renvoi pong par le bot
         if (event.getMessage().getContentRaw().equalsIgnoreCase("!ping")) {
             event.getChannel().sendMessage("Pong!").queue();
         }
 
-        // Commande !update
-        if (event.getMessage().getContentRaw().equalsIgnoreCase("!update")) {
+        // Commande !list   list les user et leur roles sur le serveur
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("!list")) {
             // Vérifie si le message vient d'un serveur (Guild)
             if (event.isFromGuild()) {
                 StringBuilder response = new StringBuilder("Liste des utilisateurs et leurs rôles :\n");

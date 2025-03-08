@@ -22,9 +22,9 @@
     </dependency>
 
     <dependency>
-    <groupId>com.example</groupId>
-    <artifactId>Model</artifactId>
-    <version>1.0-SNAPSHOT</version>
+      <groupId>com.example</groupId>
+      <artifactId>Model</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
 
     <!-- POUR PAYARA -->
@@ -32,6 +32,7 @@
       <groupId>jakarta.jms</groupId>
       <artifactId>jakarta.jms-api</artifactId>
       <version>3.1.0</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -45,6 +46,7 @@
       <groupId>jakarta.xml.soap</groupId>
       <artifactId>jakarta.xml.soap-api</artifactId>
       <version>3.0.2</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -52,7 +54,6 @@
       <artifactId>jts-core</artifactId>
       <version>1.19.0</version>
     </dependency>
-
 
     <!-- Lombok -->
     <dependency>
@@ -74,6 +75,7 @@
       <groupId>jakarta.persistence</groupId>
       <artifactId>jakarta.persistence-api</artifactId>
       <version>3.1.0</version>
+      <scope>provided</scope>
     </dependency>
 
     <!-- PostgreSQL Driver -->
@@ -100,6 +102,7 @@
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-common</artifactId>
       <version>3.0.4</version>
+      <scope>provided</scope>
     </dependency>
 
     <!-- Jersey Server -->
@@ -107,6 +110,7 @@
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-server</artifactId>
       <version>3.0.4</version>
+      <scope>provided</scope>
     </dependency>
 
     <!-- Jersey Grizzly HTTP Server -->
@@ -114,31 +118,38 @@
       <groupId>org.glassfish.jersey.containers</groupId>
       <artifactId>jersey-container-grizzly2-http</artifactId>
       <version>3.0.4</version>
+      <scope>provided</scope>
     </dependency>
 
+    <!-- Grizzly Core -->
+    <dependency>
+      <groupId>org.glassfish.grizzly</groupId>
+      <artifactId>grizzly-framework</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency>
 
-      <!-- Grizzly Core -->
-      <dependency>
-          <groupId>org.glassfish.grizzly</groupId>
-          <artifactId>grizzly-framework</artifactId>
-          <version>3.0.1</version>
-      </dependency>
-
-      <!-- Grizzly Utilities -->
-      <dependency>
-          <groupId>org.glassfish.grizzly</groupId>
-          <artifactId>grizzly-utils</artifactId>
-          <version>2.0-b2</version>
-      </dependency>
-
-
-
+    <!-- Grizzly Utilities -->
+    <dependency>
+      <groupId>org.glassfish.grizzly</groupId>
+      <artifactId>grizzly-utils</artifactId>
+      <version>2.0-b2</version>
+      <scope>provided</scope>
+    </dependency>
 
     <!-- JSON support for Jersey (Jackson) -->
     <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-json-jackson</artifactId>
       <version>3.0.4</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Jackson (forcer l'utilisation) -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.15.0</version>
     </dependency>
 
     <!-- Jakarta JAX-RS API -->
@@ -146,6 +157,7 @@
       <groupId>jakarta.ws.rs</groupId>
       <artifactId>jakarta.ws.rs-api</artifactId>
       <version>3.0.0</version>
+      <scope>provided</scope>
     </dependency>
 
     <!-- Jersey HK2 Dependency Injection -->
@@ -153,6 +165,7 @@
       <groupId>org.glassfish.jersey.inject</groupId>
       <artifactId>jersey-hk2</artifactId>
       <version>3.0.4</version>
+      <scope>provided</scope>
     </dependency>
 
     <!-- JUnit Testing -->
@@ -187,6 +200,7 @@
       <groupId>jakarta.validation</groupId>
       <artifactId>jakarta.validation-api</artifactId>
       <version>3.0.0</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -194,9 +208,7 @@
       <artifactId>json</artifactId>
       <version>20210307</version>
     </dependency>
-
   </dependencies>
-
 
 
   <build>
