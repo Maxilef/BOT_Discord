@@ -26,7 +26,7 @@ public class Role implements Identifiable<UUID> {
     )
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String nom;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE})

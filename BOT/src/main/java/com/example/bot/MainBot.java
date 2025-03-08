@@ -5,8 +5,17 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import okhttp3.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class MainBot extends ListenerAdapter {
+    private static final String API_URL = "http://localhost:8081/Rest-1.0-SNAPSHOT/users";
+    private static final OkHttpClient client = new OkHttpClient();
+
     public static void main(String[] args) {
         String token = "MTMyNDg3NTc3NzQzMDI2MTgxMQ.GTtbL9.8Kq67gxm30l8o-TKD3aRLZ8ogf6H7e-MAztOgw"; // Remplacez par votre token Discord
 
@@ -62,6 +71,77 @@ public class MainBot extends ListenerAdapter {
                 event.getChannel().sendMessage("Cette commande doit être utilisée dans un serveur !").queue();
             }
         }
+
+        if (event.getMessage().getContentRaw().equalsIgnoreCase("!update")) {
+            if (event.isFromGuild()) {
+                event.getGuild().loadMembers().onSuccess(members -> {
+                    for (var member : members) {
+                        String roles = member.getRoles().stream()
+                                .map(role -> role.getName())
+                                .collect(Collectors.joining(", "));
+                        if (roles.isEmpty()) roles = "Aucun rôle";
+                        ajouterUtilisateur(member.getEffectiveName(), roles, event);
+                    }
+                }).onError(e -> {
+                    event.getChannel().sendMessage("Erreur lors du chargement des membres.").queue();
+                });
+            } else {
+                event.getChannel().sendMessage("Cette commande doit être utilisée dans un serveur !").queue();
+            }
+        }
+    }
+
+    private void ajouterUtilisateur(String nom, String roles, MessageReceivedEvent event) {
+        JSONObject json = new JSONObject();
+        json.put("nom", nom);
+        json.put("email", nom.toLowerCase().replace(" ", "") + "@mail.com");  // Génère un email unique
+
+        // Vérifie si des rôles existent avant de les ajouter
+        JSONArray rolesArray = new JSONArray();
+        if (roles != null && !roles.isEmpty()) {
+            for (String role : roles.split("\\s*,\\s*")) {  // Gère les espaces autour de la virgule
+                if (!role.isEmpty()) {  // Évite les rôles vides
+                    JSONObject roleObject = new JSONObject();
+                    roleObject.put("nom", role);
+                    rolesArray.put(roleObject);
+                }
+            }
+        }
+        json.put("roles", rolesArray);
+
+        // 🔥 Ajout du log pour voir ce qui est envoyé
+        System.out.println("JSON envoyé pour " + nom + " : " + json.toString(2));
+
+        RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json; charset=utf-8"));
+        Request request = new Request.Builder()
+                .url(API_URL)
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                event.getChannel().sendMessage("Erreur lors de l'ajout de " + nom + " : " + e.getMessage()).queue();
+                System.err.println("Erreur réseau : " + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    if (response.isSuccessful()) {
+                        event.getChannel().sendMessage("Utilisateur " + nom + " ajouté avec succès !").queue();
+                    } else {
+                        String errorResponse = response.body().string();
+                        event.getChannel().sendMessage("Erreur lors de l'ajout de " + nom + ". Code: " + response.code()).queue();
+                        System.err.println("Réponse serveur : " + errorResponse);
+                    }
+                } catch (Exception e) {
+                    System.err.println("Erreur lors de la lecture de la réponse : " + e.getMessage());
+                } finally {
+                    response.close();
+                }
+            }
+        });
     }
 
 }

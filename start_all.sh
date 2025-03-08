@@ -7,7 +7,13 @@ sleep 5
 
 # 1️⃣ Lancer PostgreSQL avec Docker
 echo "🐘 Démarrage de PostgreSQL..."
-sudo docker-compose up -d
+#sudo docker-compose up -d
+
+cd ./BDD/src/main/java/bdd
+sudo docker build -t image_red_psql .
+sudo docker run -d --name container_red_psql -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=mydatabase -p 5555:5432 image_red_psql
+cd -
+
 # lance la base de donné dans la console
 # sudo docker exec -it container_red_psql psql -U postgres
 
@@ -16,9 +22,11 @@ echo "⏳ Attente du démarrage de PostgreSQL..."
 sleep 5
 
 # 2️⃣ Nettoyer les tables
-echo "🗑️ Suppression des données..."
-sudo docker exec -it container_red_psql psql -U postgres -d mydatabase -c "TRUNCATE TABLE user_roles CASCADE;"
-sudo docker exec -it container_red_psql psql -U postgres -d mydatabase -c "TRUNCATE TABLE role CASCADE;"
+#echo "🗑️ Suppression des données..."
+#sudo docker exec -it container_red_psql psql -U postgres -d mydatabase -c "TRUNCATE TABLE user_roles CASCADE;"
+#sudo docker exec -it container_red_psql psql -U postgres -d mydatabase -c "TRUNCATE TABLE role CASCADE;"
+
+
 
 
 # 3️⃣ Générer le fichier WAR
@@ -38,6 +46,11 @@ cd /home/mxrsl/Bureau/payara6/bin
 echo "⏳ Attente du démarrage de Payara..."
 sleep 20
 
+
+cd /home/mxrsl/Bureau/TP1_I311/DAO
+mvn test -Dtest=dao.InitEntityManager
+cd -
+
 # 7️⃣ Lancer le bot Discord
 echo "🤖 Lancement du bot Discord..."
 cd ~/Bureau/TP1_I311/BOT
@@ -47,3 +60,6 @@ mvn compile exec:java -Dexec.mainClass="com.example.bot.MainBot"
 echo "✅ fin de tous les procesus"
 cd /home/mxrsl/Bureau/payara6/bin
 ./asadmin stop-domain &
+
+sudo docker stop container_red_psql
+sudo docker rm container_red_psql
