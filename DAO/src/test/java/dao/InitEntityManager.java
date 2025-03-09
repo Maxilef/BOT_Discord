@@ -13,14 +13,11 @@ public class InitEntityManager {
 
     @BeforeAll
     public static void init() {
-        // Obtenir un EntityManager
         entityManager = DbManager.getEntityManagerFactory().createEntityManager();
         transaction = entityManager.getTransaction();
 
-        // Démarrer une transaction
         transaction.begin();
 
-        // Supprimer tous les utilisateurs pour avoir un état propre
         entityManager.createQuery("DELETE FROM APPUser").executeUpdate();
     }
 

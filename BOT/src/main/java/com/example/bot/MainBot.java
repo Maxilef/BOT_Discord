@@ -75,13 +75,54 @@ public class MainBot extends ListenerAdapter {
         if (event.getMessage().getContentRaw().equalsIgnoreCase("!update")) {
             if (event.isFromGuild()) {
                 event.getGuild().loadMembers().onSuccess(members -> {
-                    for (var member : members) {
-                        String roles = member.getRoles().stream()
-                                .map(role -> role.getName())
-                                .collect(Collectors.joining(", "));
-                        if (roles.isEmpty()) roles = "Aucun rôle";
-                        ajouterUtilisateur(member.getEffectiveName(), roles, event);
-                    }
+                    // 1️⃣ Récupérer la liste actuelle des utilisateurs en BDD
+                    Request request = new Request.Builder()
+                            .url(API_URL)
+                            .get()
+                            .build();
+
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            event.getChannel().sendMessage("Erreur lors de la récupération des utilisateurs en BDD.").queue();
+                            System.err.println("Erreur : " + e.getMessage());
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            if (!response.isSuccessful()) {
+                                System.err.println("Erreur réponse API : " + response.code());
+                                return;
+                            }
+
+                            JSONArray dbUsers = new JSONArray(response.body().string());
+                            response.close();
+
+                            // 2️⃣ Convertir les membres du serveur en liste de noms
+                            var guildMemberNames = members.stream()
+                                    .map(member -> member.getEffectiveName())
+                                    .collect(Collectors.toSet());
+
+                            // 3️⃣ Vérifier qui n'est plus sur le serveur et le supprimer
+                            for (int i = 0; i < dbUsers.length(); i++) {
+                                JSONObject user = dbUsers.getJSONObject(i);
+                                String userName = user.getString("nom");
+
+                                if (!guildMemberNames.contains(userName)) {
+                                    supprimerUtilisateur(userName, event); // Supprime l'utilisateur absent
+                                }
+                            }
+
+                            // 4️⃣ Ajouter ou mettre à jour les membres existants
+                            for (var member : members) {
+                                String roles = member.getRoles().stream()
+                                        .map(role -> role.getName())
+                                        .collect(Collectors.joining(", "));
+                                if (roles.isEmpty()) roles = "Aucun rôle";
+                                ajouterUtilisateur(member.getEffectiveName(), roles, event);
+                            }
+                        }
+                    });
                 }).onError(e -> {
                     event.getChannel().sendMessage("Erreur lors du chargement des membres.").queue();
                 });
@@ -143,5 +184,30 @@ public class MainBot extends ListenerAdapter {
             }
         });
     }
+
+    private void supprimerUtilisateur(String nom, MessageReceivedEvent event) {
+        Request request = new Request.Builder()
+                .url(API_URL + "/" + nom) // Supposons que l'API accepte une suppression par nom
+                .delete()
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.err.println("Erreur lors de la suppression de " + nom + " : " + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    System.out.println("Utilisateur " + nom + " supprimé de la BDD.");
+                } else {
+                    System.err.println("Erreur lors de la suppression de " + nom + " : " + response.code());
+                }
+                response.close();
+            }
+        });
+    }
+
 
 }
